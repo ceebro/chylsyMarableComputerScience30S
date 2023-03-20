@@ -15,10 +15,11 @@ public class ChylsyMarablePowersAndExponents {
     public static void main(String[] args) {
 
         final String TITLE = "Powers and Exponents";
+        
+        start("Welcome to " + TITLE + "!", TITLE);
 
         do {
             
-                    start("Welcome to " + TITLE + "!", TITLE);
         String input = userBase("Enter a base", TITLE);
         int base = Integer.parseInt(input);
 
