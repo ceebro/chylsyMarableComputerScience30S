@@ -1,4 +1,83 @@
 
+package chylsymarablepowersandexponents;
+
+import javax.swing.JOptionPane;
+
+
+/*
+ * ChylsyMarablePowersAndExponents - description
+ * 
+ * @author Your Name
+ * @since 20-Mar-2023
+*/
+public class ChylsyMarablePowersAndExponents
+{
+
+    /**
+     * Main method for the project
+     * 
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        final String TITLE = "Powers and Exponents";
+
+        start("Welcome to " + TITLE + "!", TITLE);
+
+        do {
+
+            String input = userBase("Enter a base", TITLE);
+            int base = Integer.parseInt(input);
+            /* Input dialog boxes can only store string values, so the user's
+            input is stored into a string. We cannot use this for the Math.pow ( )
+            method, so we must parse it into an integer.
+            */
+
+            String input2 = userExponent("Enter an exponent", TITLE);
+            int exponent = Integer.parseInt(input2);
+            /* Parsing the exponent string variable into an integer so we can
+            use it in the Math.pow ( ) method. Explained above.
+            */
+
+            int power = (int) Math.pow(base, exponent);
+
+            power(base, exponent, power, TITLE);
+
+        } while (confirm("Do you want to play again?", TITLE) == true);
+        /* A do while loop is put into place so that the program will repeat 
+        only if the confirm( ) method equals true. This means the program will
+        only repeat if the confirm( ) method equals to 0.
+        
+        */
+
+        finish("Thank you for using the " + TITLE + " program!", TITLE);
+
+    }
+
+    /**
+     * Displays the user welcome message.
+     * @param message - The message of the dialog box.
+     * @param title - The title of the program (used in the title of the 
+     * dialog box).
+     */
+    private static void start(String message, String title) {
+
+        output(message, title);
+
+    }
+
+    /**
+     * The dialog box that the user uses to enter the base of their choice.
+     * @param message - The message of the dialog box.
+     * @param title - The title of the program (used in the title of the 
+     * dialog box).
+     * @return - Returns a string variable (the base the user entered to 
+     * use the program).
+     */
+    private static String userBase(String message, String title) {
+
+        return userInputs(message, title);
+
     }
 
     /**
