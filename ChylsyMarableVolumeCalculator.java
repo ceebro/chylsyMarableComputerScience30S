@@ -86,16 +86,21 @@ public class ChylsyMarableVolumeCalculator {
         
     }
     
-    private static String userInputs (String message, String title){
+     private static String userInputs (String message, String title){
         
-        return JOptionPane.showInputDialog(
-                null,
-                message,
-                title, 
-                JOptionPane.PLAIN_MESSAGE
-        );
-                
-    }
+        String input;
+
+        do{
+            input = JOptionPane.showInputDialog(
+                    null, 
+                    message,
+                    title, 
+                    JOptionPane.PLAIN_MESSAGE);
+            
+        } while(input.equals("") || input == null);
+
+        return input;
+    } 
 
     private static boolean confirm(String message, String title){
         
