@@ -114,5 +114,31 @@ public class ChylsyMarableVolumeCalculator {
                 
         return confirm == 0;
         
+/*
+private static boolean confirm(String message, String title){
+        
+        int confirm = JOptionPane.showConfirmDialog(
+                null,
+                message,
+                title,
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE
+                );
+                
+        if (confirm == 1){
+            System.exit(1);       
+        }
+        
+        else if (confirm == 0){
+            
+            return confirm == 0;
+        }
+        
+        return false;
+*/
+        
+
+        
+        
     }
 }
