@@ -17,6 +17,7 @@ public class ChylsyMarableRinkyDooflingyCompany
 {
 
     static final String TITLE = "The Rinky Dooflingy Company"; 
+    
     /**
      * Main method for the project
      * 
