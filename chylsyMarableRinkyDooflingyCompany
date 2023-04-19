@@ -1,0 +1,45 @@
+
+package chylsymarablerinkydooflingycompany;
+
+import javax.swing.JOptionPane;
+
+
+/*
+ * ChylsyMarableRinkyDooflingyCompany - 
+    an application that allows the user to enter the 
+    amount of Dooflingies sold in that size for each city 
+    (Winnipeg, Calgary), and display those amounts.
+ * 
+ * @author Chylsy Marable
+ * @since 19-Apr-2023
+*/
+public class ChylsyMarableRinkyDooflingyCompany
+{
+
+    static final String TITLE = "The Rinky Dooflingy Company"; 
+    /**
+     * Main method for the project
+     * 
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        welcome("Welcome to the ", TITLE);
+
+        
+    }
+
+    private static void welcome(String message, String title) {
+        
+        output(message, title);
+    }
+
+    private static void output(String message, String title) {
+        
+        JOptionPane.showMessageDialog(null, 
+                message, 
+                title, 
+                JOptionPane.PLAIN_MESSAGE);
+    }
+
+}
