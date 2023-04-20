@@ -43,4 +43,26 @@ public class ChylsyMarableRinkyDooflingyCompany
                 JOptionPane.PLAIN_MESSAGE);
     }
 
+
+    private static void program() {
+      
+        String text = "What would you like to do?"
+                        + "\n 1 - See the sales for Winnipeg"
+                        + "\n 2 - See the sales for Calgary"
+                        + "\n 3 - Enter the sales for Winnipeg"
+                        + "\n 4 - Enter the sales for Calgary"
+                        + "\n 5 - See the total sales of the company"
+                        + "\n 6 - Quit the program";
+
+        String choice = JOptionPane.showInputDialog(
+                null,
+                text,
+                TITLE,
+                JOptionPane.PLAIN_MESSAGE
+        );
+        
+        
+    }
+
 }
+
