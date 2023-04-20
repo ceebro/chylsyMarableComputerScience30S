@@ -25,7 +25,7 @@ public class ChylsyMarableRinkyDooflingyCompany
      */
     public static void main(String[] args) {
 
-        welcome("Welcome to the ", TITLE);
+        welcome("Welcome to the " + TITLE, TITLE);
 
         
     }
