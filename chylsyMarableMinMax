@@ -1,0 +1,78 @@
+
+package chylsymarableminmaxgame;
+
+import javax.swing.JOptionPane;
+
+
+/*
+ * ChylsyMarableMinMaxGame - description
+ * 
+ * @author Chylsy Marable
+ * @since 24-Apr-2023
+*/
+public class ChylsyMarableMinMaxGame
+{
+
+    static final String TITLE = "Min/Max Game";
+    /**
+     * Main method for the project
+     * 
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+
+        welcome();
+        program();
+        
+    }
+
+    private static void welcome() {
+        
+        output("Welcome to the ", TITLE + "!");
+    }
+
+    private static void program() {
+        
+        String text = "Here is your random array:"; 
+        
+       int[] randoms = random(1, 100, 10);
+        
+        
+        
+    }
+    
+    private static int[] random(int low, int high, int size) {
+        
+        int[] numbers = new int[size];      
+        
+        for (int i = 0; i < size; i++) {  
+            numbers[i] = random(low, high);
+            
+     }
+        return numbers;                    
+    }
+    
+    private static void output(String message, String title){
+    
+        JOptionPane.showMessageDialog(
+                null, 
+                message,
+                title, 
+                JOptionPane.PLAIN_MESSAGE
+        );
+    
+    }
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+}
