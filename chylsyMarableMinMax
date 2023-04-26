@@ -21,10 +21,11 @@ public class ChylsyMarableMinMaxGame {
     public static void main(String[] args) {
 
         welcome();
+        
         do{
-               program();
-        } while (confirm(); == JOptionPane.YES_OPTION);
-     
+            program();
+        } while (confirm() == true);
+        
         thanks();
     }
 
@@ -83,14 +84,15 @@ public class ChylsyMarableMinMaxGame {
 
     private static boolean confirm(){
         
-        String confirm = JOptionPane.showInputDialog(
+        int confirm = JOptionPane.showConfirmDialog(
                 null,
-                "Do you want to play again?",
-                TITLE, 
+                "Do you want to play again?", 
+                TITLE,
+                JOptionPane.YES_NO_OPTION, 
                 JOptionPane.PLAIN_MESSAGE);
         
-       
-                
+        return confirm == JOptionPane.YES_OPTION;
+
     }
     
     private static void output(String message, String title) {
