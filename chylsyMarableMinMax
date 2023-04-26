@@ -1,4 +1,3 @@
-
 package chylsymarableminmaxgame;
 
 import javax.swing.JOptionPane;
@@ -9,70 +8,100 @@ import javax.swing.JOptionPane;
  * 
  * @author Chylsy Marable
  * @since 24-Apr-2023
-*/
-public class ChylsyMarableMinMaxGame
-{
+ */
+public class ChylsyMarableMinMaxGame {
 
-    static final String TITLE = "Min/Max Game";
+    static final String TITLE = "Min/Max Program";
+
     /**
      * Main method for the project
-     * 
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
         welcome();
-        program();
-        
+        do{
+               program();
+        } while (confirm(); == JOptionPane.YES_OPTION);
+     
+        thanks();
     }
 
     private static void welcome() {
-        
-        output("Welcome to the ", TITLE + "!");
+
+        output("Welcome to the " + TITLE + "!", TITLE);
     }
 
     private static void program() {
+
+        int[] randoms = random(1, 100, 10);
+
+        String text = "Here is your random array:"
+                + "\n Index 0: " + randoms[0]
+                + "\n Index 1: " + randoms[1]
+                + "\n Index 2: " + randoms[2]
+                + "\n Index 3: " + randoms[3]
+                + "\n Index 4: " + randoms[4]
+                + "\n Index 5: " + randoms[5]
+                + "\n Index 6: " + randoms[6]
+                + "\n Index 7: " + randoms[7]
+                + "\n Index 8: " + randoms[8]
+                + "\n Index 9: " + randoms[9]
+                + "\n The minimum number in the array is: "
+                + "\n The maximum number in the array is:  "
+                ;
         
-        String text = "Here is your random array:"; 
-        
-       int[] randoms = random(1, 100, 10);
-        
-        
-        
-    }
-    
-    private static int[] random(int low, int high, int size) {
-        
-        int[] numbers = new int[size];      
-        
-        for (int i = 0; i < size; i++) {  
-            numbers[i] = random(low, high);
-            
-     }
-        return numbers;                    
-    }
-    
-    private static void output(String message, String title){
-    
-        JOptionPane.showMessageDialog(
-                null, 
-                message,
-                title, 
-                JOptionPane.PLAIN_MESSAGE
-        );
-    
+
+        output(text, TITLE);
+
     }
 
+    private static int[] random(int low, int high, int size) {
+
+        int[] numbers = new int[size];
+
+        for (int i = 0; i < size; i++) {
+            numbers[i] = random(low, high);
+
+        }
+        return numbers;
+    }
+
+    private static int random(int low, int high) {
+        double seed = Math.random();                  
+        double L = (double) low;                     
+        double H = (double) high;
+        double number = (H - L + 1) * seed + L;         
+        return (int) number;                             
+    }
     
+    private static void thanks(){
+        
+        output("Thank you for using the " + TITLE + "!", TITLE);
+    }
+
+    private static boolean confirm(){
+        
+        String confirm = JOptionPane.showInputDialog(
+                null,
+                "Do you want to play again?",
+                TITLE, 
+                JOptionPane.PLAIN_MESSAGE);
+        
+       
+                
+    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    private static void output(String message, String title) {
+
+        JOptionPane.showMessageDialog(
+                null,
+                message,
+                title,
+                JOptionPane.PLAIN_MESSAGE
+        );
+
+    }
+
 }
