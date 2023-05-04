@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 public class ChylsyMarableRinkyDooflingyCompany {
 
     static final String TITLE = "Rinky Dooflingy Company";
+    static final int SIZE = 10;
 
     /**
      * Main method for the project
@@ -42,10 +43,10 @@ public class ChylsyMarableRinkyDooflingyCompany {
                 + "\n 5 - See the total sales of the company"
                 + "\n 6 - Quit the program";
 
-        int[] winnipeg = new int[10];
+        int[] winnipeg = new int[SIZE];
 
-        int[] calgary = new int[10];
-        
+        int[] calgary = new int[SIZE];
+
         int choice = 0;
         do {
             String userChoices = JOptionPane.showInputDialog(
@@ -58,19 +59,19 @@ public class ChylsyMarableRinkyDooflingyCompany {
             choice = Integer.parseInt(userChoices);
 
             if (choice == 1) {
-                output(winnipeg, TITLE, "Winnipeg");                
+                output(winnipeg, TITLE, "Winnipeg");
             } else if (choice == 2) {
                 output(calgary, TITLE, "Calgary");
             } else if (choice == 3) {
-                winnipeg = input("Winnipeg",10);
+                winnipeg = input("Winnipeg", 10);
             } else if (choice == 4) {
-                calgary = input("Calgary",10);     
+                calgary = input("Calgary", 10);
             } else if (choice == 5) {
                 total(winnipeg, calgary);
             }
 
         } while (choice < 6);
-        
+
         JOptionPane.showMessageDialog(null, "Bye");
 
     }
@@ -83,20 +84,20 @@ public class ChylsyMarableRinkyDooflingyCompany {
                 title,
                 JOptionPane.PLAIN_MESSAGE);
     }
-    
+
     private static void output(int[] array, String title, String city) {
         String text = city + " Sales\n\n";
         for (int i = 0; i < array.length; i++) {
-            text = text + "Size " + (i+1) + ": " + array[i] + "\n";
-        }        
+            text = text + "Size " + (i + 1) + ": " + array[i] + "\n";
+        }
         output(text, title);
     }
 
     private static int[] input(String city, int size) {
         int[] array = new int[size];
         for (int i = 0; i < array.length; i++) {
-        
-            String text = "Enter sales for " + city + " size: " + (i+1);
+
+            String text = "Enter sales for " + city + " size: " + (i + 1);
             String value = JOptionPane.showInputDialog(text);
             int sale = Integer.parseInt(value);
             array[i] = sale;
@@ -105,6 +106,21 @@ public class ChylsyMarableRinkyDooflingyCompany {
     }
 
     private static void total(int[] winnipeg, int[] calgary) {
+        String text = "Total company sales: \n \n";
+
+        int[] total = new int[SIZE];
+        for (int i = 0; i < total.length; i++) {
+
+            total[i] = winnipeg[i] + calgary[i];
+
+            text = text + "Size " + (i + 1) + ":" + total[i] + "\n";
+
+        }
+
+        JOptionPane.showMessageDialog(null, text, TITLE, JOptionPane.PLAIN_MESSAGE);
+
     }
 
 }
+
+
