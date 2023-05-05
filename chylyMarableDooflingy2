@@ -4,9 +4,11 @@ import javax.swing.JOptionPane;
 
 /*
  * ChylsyMarableRinkyDooflingyCompany - 
-    an application that allows the user to enter the 
+    An application that allows the user to enter the 
     amount of Dooflingies sold in that size for each city 
-    (Winnipeg, Calgary), and display those amounts.
+    (Winnipeg, Calgary), and display those amounts. The user
+    can also enter the values themselves and add the total of
+    each sizes per index.
  * 
  * @author Chylsy Marable
  * @since 19-Apr-2023
@@ -48,15 +50,11 @@ public class ChylsyMarableRinkyDooflingyCompany {
         int[] calgary = new int[SIZE];
 
         int choice = 0;
+        
         do {
-            String userChoices = JOptionPane.showInputDialog(
-                    null,
-                    text,
-                    TITLE,
-                    JOptionPane.PLAIN_MESSAGE
-            );
+            String userChoice = input(text, TITLE);
 
-            choice = Integer.parseInt(userChoices);
+            choice = Integer.parseInt(userChoice);
 
             if (choice == 1) {
                 output(winnipeg, TITLE, "Winnipeg");
@@ -72,17 +70,8 @@ public class ChylsyMarableRinkyDooflingyCompany {
 
         } while (choice < 6);
 
-        JOptionPane.showMessageDialog(null, "Bye");
+      output("Thank you for using the " + TITLE, TITLE);
 
-    }
-
-    private static void output(String message, String title) {
-
-        JOptionPane.showMessageDialog(
-                null,
-                message,
-                title,
-                JOptionPane.PLAIN_MESSAGE);
     }
 
     private static void output(int[] array, String title, String city) {
@@ -95,13 +84,18 @@ public class ChylsyMarableRinkyDooflingyCompany {
 
     private static int[] input(String city, int size) {
         int[] array = new int[size];
+        do{
+            
         for (int i = 0; i < array.length; i++) {
 
             String text = "Enter sales for " + city + " size: " + (i + 1);
-            String value = JOptionPane.showInputDialog(text);
+            
+            String value = input(text, TITLE);
+            
             int sale = Integer.parseInt(value);
             array[i] = sale;
         }
+        } while (value == "");
         return array;
     }
 
@@ -117,10 +111,27 @@ public class ChylsyMarableRinkyDooflingyCompany {
 
         }
 
-        JOptionPane.showMessageDialog(null, text, TITLE, JOptionPane.PLAIN_MESSAGE);
+        output(text, TITLE);
 
     }
 
+     private static void output(String message, String title) {
+
+        JOptionPane.showMessageDialog(
+                null,
+                message,
+                title,
+                JOptionPane.PLAIN_MESSAGE);
+    }
+     
+    private static String input(String message, String title){
+        
+        return JOptionPane.showInputDialog(
+                null,
+                message,
+                title,
+                JOptionPane.PLAIN_MESSAGE);
+    }
 }
 
 
