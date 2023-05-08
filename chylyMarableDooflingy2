@@ -30,11 +30,20 @@ public class ChylsyMarableRinkyDooflingyCompany {
 
     }
 
+    /**
+     * This method displays the user welcome.
+     */
     private static void welcome() {
 
         output("Welcome to the " + TITLE + "!", TITLE);
     }
-
+    
+    /**
+     * This method executes the program. A do while loop dictates when the
+     * program is executed and the if statements run certain parts depending
+     * on the user's input. At the end, the program displays the thank you
+     * message.
+     */
     private static void program() {
 
         String text = "What would you like to do?"
@@ -69,8 +78,9 @@ public class ChylsyMarableRinkyDooflingyCompany {
             }
 
         } while (choice < 6);
-
-      output("Thank you for using the " + TITLE, TITLE);
+        
+      output("Thank you for using the " + TITLE + "!", TITLE);
+      System.exit(0);
 
     }
 
@@ -84,18 +94,19 @@ public class ChylsyMarableRinkyDooflingyCompany {
 
     private static int[] input(String city, int size) {
         int[] array = new int[size];
-        do{
-            
+        
         for (int i = 0; i < array.length; i++) {
-
+            
             String text = "Enter sales for " + city + " size: " + (i + 1);
-            
-            String value = input(text, TITLE);
-            
+            String value = "";
+            do{
+                value = input(text, TITLE);
+            } while (value.equals(""));
             int sale = Integer.parseInt(value);
             array[i] = sale;
         }
-        } while (value == "");
+
+        
         return array;
     }
 
