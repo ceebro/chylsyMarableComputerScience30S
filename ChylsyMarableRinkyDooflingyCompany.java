@@ -140,7 +140,7 @@ public class ChylsyMarableRinkyDooflingyCompany {
 
             total[i] = winnipeg[i] + calgary[i];
 
-            text = text + "Size " + (i + 1) + ":" + total[i] + "\n";
+            text = text + "Size " + (i + 1) + ": " + total[i] + "\n";
 
         }
 
