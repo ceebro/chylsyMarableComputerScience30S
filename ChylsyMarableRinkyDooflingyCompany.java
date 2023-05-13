@@ -62,9 +62,12 @@ public class ChylsyMarableRinkyDooflingyCompany {
 
         int choice = 0;
 
-        do {
-            String userChoice = input(text, TITLE);
-
+         do {
+            
+            do{
+                userChoice = input(text, TITLE);
+            } while (userChoice.equals(""));
+            
             choice = Integer.parseInt(userChoice);
 
             if (choice == 1) {
