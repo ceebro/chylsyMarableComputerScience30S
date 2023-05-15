@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  */
 public class ChylsyMarableRinkyDooflingyCompany {
 
-    /*
+   /*
     These are constant variables (static variables) that will be used throughout
     the program. 
      */
@@ -62,9 +62,9 @@ public class ChylsyMarableRinkyDooflingyCompany {
 
         int choice = 0;
 
-         do {
-             
+        do {
             String userChoice = input(text, TITLE);
+
             choice = Integer.parseInt(userChoice);
 
             if (choice == 1) {
@@ -164,7 +164,7 @@ public class ChylsyMarableRinkyDooflingyCompany {
     }
 
     /**
-     * This method displays the JOptionpane input dialogs boxes within the 
+     * This method displays the JOptionpane input dialog boxes within the 
      * program.
      *
      * @param message - The message of the dialog box
