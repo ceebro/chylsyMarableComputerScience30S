@@ -59,25 +59,45 @@ public class ChylsyMarableComicStore {
         int choice = 0;
 
         String userChoice = "";
-        
-      do {
-            
-            do{
+
+        do {
+
+            do {
                 userChoice = input(text, TITLE);
             } while (userChoice.equals(""));
-            
+
             choice = Integer.parseInt(userChoice);
 
             if (choice == 1) {
+
                 output(titles, TITLE);
             } else if (choice == 2) {
-                String indexChoice = input("Enter the index title you want to see:", TITLE);
-                int index = Integer.parseInt(indexChoice);
+
+                int index = 0;
+
+                do {
+                    String indexChoice = input("Enter the index title you want to see:", TITLE);
+                    index = Integer.parseInt(indexChoice);
+                } while (index > 10);
+
                 String message = "Index " + choice + " is set to: ";
                 output(message + titles[index - 1], TITLE);
+                
+                if (index > 10){
+                    
+                    String message2 = " is out of bounds.";
+                    output(index + message2, TITLE);
+                }
+                
             } else if (choice == 3) {
-                String indexChoice = input("Enter the index to change:", TITLE);
-                int index = Integer.parseInt(indexChoice);
+
+                int index = 0;
+
+                do {
+                    String indexChoice = input("Enter the index to change:", TITLE);
+                    index = Integer.parseInt(indexChoice);
+                } while (index > 10);
+
                 String inputMessage = "Enter the new title for index " + index + ":";
                 titles[index - 1] = input(inputMessage, TITLE);
                 String outputMessage = "Index " + index + " is now set to: ";
@@ -103,7 +123,7 @@ public class ChylsyMarableComicStore {
         for (int i = 0; i < array.length; i++) {
             message = message + "Index " + (i + 1) + ": " + array[i] + "\n";
         }
-        
+
         output(message, title);
     }
 
@@ -119,7 +139,7 @@ public class ChylsyMarableComicStore {
             String text = "Enter the title for index " + (i + 1) + ":";
             titles[i] = input(text, TITLE);
         }
-        
+
         return titles;
     }
 
