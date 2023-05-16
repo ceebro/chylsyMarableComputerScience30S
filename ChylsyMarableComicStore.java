@@ -6,7 +6,8 @@ import javax.swing.JOptionPane;
 /*
  * ChylsyMarableComicStore - 
     This is a program that allows a comic store to enter comic book titles
-    as well as see its individual or collective inventory.
+    as well as see and change its individual inventory. It can display the 
+    entire inventory or a single title upon the user's wishes.
  * 
  * @author Chylsy Marable
  * @since 4-May-2023
@@ -29,6 +30,7 @@ public class ChylsyMarableComicStore {
 
         welcome();
         program();
+        thanks();
     }
 
     /**
@@ -42,7 +44,7 @@ public class ChylsyMarableComicStore {
     /**
      * This method executes the program. A do while loop dictates when the
      * program is executed and the if statements run certain parts depending on
-     * the user's input. At the end, the program displays the thank you message.
+     * the user's input.
      */
     private static void program() {
 
@@ -50,7 +52,7 @@ public class ChylsyMarableComicStore {
 
         titles = input(titles);
 
-        String text = "What would you like to do?"
+        String userChoice = "What would you like to do?"
                 + "\n \n 1 - See the entire database"
                 + "\n 2 - See an index title"
                 + "\n 3 - Change an index title"
@@ -58,46 +60,41 @@ public class ChylsyMarableComicStore {
 
         int choice = 0;
 
-        String userChoice = "";
-
         do {
 
             do {
-                userChoice = input(text, TITLE);
-            } while (userChoice.equals(""));
 
-            choice = Integer.parseInt(userChoice);
+                choice = inputOption(userChoice);
+            } while (choice > 4);
 
             if (choice == 1) {
 
                 output(titles, TITLE);
             } else if (choice == 2) {
-                                
-                int index = inputIndex("",0);
-                
-                if (index > 10) {
+
+                String inputIndex = "Enter the index title you want to see:";
+
+                int index = inputOption(inputIndex);
+
+                if (index > SIZE) {
 
                     String errorMessage = " is outside of the database.";
                     output("Index " + index + errorMessage, TITLE);
-                    index = inputIndex("", 0);
+
+                    index = inputOption(inputIndex);
                 }
 
-                String message = "Index " + choice + " is set to: ";
+                String message = "Index " + index + " is set to: ";
                 output(message + titles[index - 1], TITLE);
-
             } else if (choice == 3) {
 
                 int index = 0;
-                String indexChoice = "";
 
                 do {
-                    
-                    do {
-                        indexChoice = input("Enter the index to change:", TITLE);
-                    } while (indexChoice.equals(""));
 
-                    index = Integer.parseInt(indexChoice);
-                } while (index > 10);
+                    String newIndex = "Enter the index to change:";
+                    index = inputOption(newIndex);
+                } while (index > SIZE);
 
                 String inputMessage = "Enter the new title for index " + index + ":";
                 titles[index - 1] = input(inputMessage, TITLE);
@@ -107,7 +104,6 @@ public class ChylsyMarableComicStore {
 
         } while (choice < 4);
 
-        output("Thank you for using the " + TITLE + "!", TITLE);
     }
 
     /**
@@ -128,17 +124,25 @@ public class ChylsyMarableComicStore {
         output(message, title);
     }
 
-    private static int inputIndex(String indexChoice, int index){
-   
-        do {
-            indexChoice = input("Enter the index title you want to see:", TITLE);
-        } while (indexChoice.equals(""));
+    /**
+     * This method collects the user's input (user's choice for what to do
+     * within the program, user's index input) and replays if the user does not
+     * enter anything.
+     *
+     * @param message - The message of the dialog box
+     * @return - Returns the user's index input as an integer
+     */
+    private static int inputOption(String message) {
 
-        index = Integer.parseInt(indexChoice);
+        String indexChoice = "";
+        do {
+            indexChoice = input(message, TITLE);
+        } while (indexChoice.equals(""));
+        int index = Integer.parseInt(indexChoice);
 
         return index;
-}
-            
+    }
+
     /**
      * This method collects the titles of the comic books (the user's inputs).
      *
@@ -153,6 +157,14 @@ public class ChylsyMarableComicStore {
         }
 
         return titles;
+    }
+
+    /**
+     * This method displays the user 'thank you' message.
+     */
+    private static void thanks() {
+
+        output("Thank you for using the " + TITLE + "!", TITLE);
     }
 
     /**
