@@ -72,29 +72,30 @@ public class ChylsyMarableComicStore {
 
                 output(titles, TITLE);
             } else if (choice == 2) {
+                                
+                int index = inputIndex("",0);
+                
+                if (index > 10) {
 
-                int index = 0;
-
-                do {
-                    String indexChoice = input("Enter the index title you want to see:", TITLE);
-                    index = Integer.parseInt(indexChoice);
-                } while (index > 10);
+                    String errorMessage = " is outside of the database.";
+                    output("Index " + index + errorMessage, TITLE);
+                    index = inputIndex("", 0);
+                }
 
                 String message = "Index " + choice + " is set to: ";
                 output(message + titles[index - 1], TITLE);
-                
-                if (index > 10){
-                    
-                    String message2 = " is out of bounds.";
-                    output(index + message2, TITLE);
-                }
-                
+
             } else if (choice == 3) {
 
                 int index = 0;
+                String indexChoice = "";
 
                 do {
-                    String indexChoice = input("Enter the index to change:", TITLE);
+                    
+                    do {
+                        indexChoice = input("Enter the index to change:", TITLE);
+                    } while (indexChoice.equals(""));
+
                     index = Integer.parseInt(indexChoice);
                 } while (index > 10);
 
@@ -127,6 +128,17 @@ public class ChylsyMarableComicStore {
         output(message, title);
     }
 
+    private static int inputIndex(String indexChoice, int index){
+   
+        do {
+            indexChoice = input("Enter the index title you want to see:", TITLE);
+        } while (indexChoice.equals(""));
+
+        index = Integer.parseInt(indexChoice);
+
+        return index;
+}
+            
     /**
      * This method collects the titles of the comic books (the user's inputs).
      *
