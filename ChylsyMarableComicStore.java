@@ -20,7 +20,8 @@ public class ChylsyMarableComicStore {
      */
     static final String TITLE = "Comic Book Store";
     static final int SIZE = 10;
-
+    static final String errorMessage = " is outside of the database.";
+    
     /**
      * Main method for the project
      *
@@ -52,16 +53,16 @@ public class ChylsyMarableComicStore {
 
         titles = input(titles);
 
-        String userChoice = "What would you like to do?"
+        int choice = 0; 
+        
+        do {
+            
+            String userChoice = "What would you like to do?"
                 + "\n \n 1 - See the entire database"
                 + "\n 2 - See an index title"
                 + "\n 3 - Change an index title"
                 + "\n 4 - Quit the program ";
-
-        int choice = 0;
-
-        do {
-
+                        
             do {
 
                 choice = inputOption(userChoice);
@@ -78,28 +79,32 @@ public class ChylsyMarableComicStore {
 
                 if (index > SIZE) {
 
-                    String errorMessage = " is outside of the database.";
                     output("Index " + index + errorMessage, TITLE);
 
                     index = inputOption(inputIndex);
                 }
 
-                String message = "Index " + index + " is set to: ";
-                output(message + titles[index - 1], TITLE);
+                String outputTitle = "Index " + index + " is set to: ";
+                output(outputTitle + titles[index - 1], TITLE);
             } else if (choice == 3) {
 
                 int index = 0;
 
-                do {
-
                     String newIndex = "Enter the index to change:";
                     index = inputOption(newIndex);
-                } while (index > SIZE);
+                
+                if (index > SIZE){
+                    
+                    output("Index " + index + errorMessage, TITLE);
+                    
+                    index = inputOption(newIndex);
+                }
 
                 String inputMessage = "Enter the new title for index " + index + ":";
                 titles[index - 1] = input(inputMessage, TITLE);
-                String outputMessage = "Index " + index + " is now set to: ";
-                output(outputMessage + titles[index - 1], TITLE);
+                
+                String outputNewTitle = "Index " + index + " is now set to: ";
+                output(outputNewTitle + titles[index - 1], TITLE);
             }
 
         } while (choice < 4);
@@ -135,6 +140,7 @@ public class ChylsyMarableComicStore {
     private static int inputOption(String message) {
 
         String indexChoice = "";
+        
         do {
             indexChoice = input(message, TITLE);
         } while (indexChoice.equals(""));
