@@ -80,7 +80,6 @@ public class ChylsyMarableComicStore {
                 if (index > SIZE) {
 
                     output("Index " + index + errorMessage, TITLE);
-
                     index = inputOption(inputIndex);
                 }
 
@@ -90,8 +89,8 @@ public class ChylsyMarableComicStore {
 
                 int index = 0;
 
-                    String newIndex = "Enter the index to change:";
-                    index = inputOption(newIndex);
+                String newIndex = "Enter the index to change:";
+                index = inputOption(newIndex);
                 
                 if (index > SIZE){
                     
@@ -144,6 +143,7 @@ public class ChylsyMarableComicStore {
         do {
             indexChoice = input(message, TITLE);
         } while (indexChoice.equals(""));
+        
         int index = Integer.parseInt(indexChoice);
 
         return index;
