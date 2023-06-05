@@ -1,10 +1,10 @@
-/** Required package class namespace */
+
 package finalproject30s;
 
 /*
  * TextEN - description
  * 
- * @author Your Name
+ * @author Chylsy Marable
  * @since 3-Jun-2023
 */
 public class TextEN
