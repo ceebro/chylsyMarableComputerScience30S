@@ -14,7 +14,7 @@ public class TextEN
     
     public TextEN(){
         
-        textEN = new String[15];
+        textEN = new String[16];
         
         // <editor-fold>
         textEN[0] = "       After a boating accident, you are left stranded on a "
@@ -84,6 +84,7 @@ public class TextEN
                 + "\n die of malnourishment.";
         //starvation ending
         
+        textEN[15] = "Thank you for playing Island Adventure!";
         // </editor-fold>
      
     }
