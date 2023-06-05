@@ -1,14 +1,15 @@
 
-package finalproject30s;
+package chylsymarableislandadventure;
 
-import java.awt.*;
 import javax.swing.*;
 
-/**
- *
- * @author chylsy marable
+/*
+ * ChylsyMarableIslandAdventure
+ * 
+ * @author Chylsy Marable
+ * @since 3-Jun-2023
  */
-public class FinalProject30S {
+public class ChylsyMarableIslandAdventure {
 
     public static final String TITLE = "Island Adventure";
     
@@ -25,34 +26,45 @@ public class FinalProject30S {
     public static void welcomeScreen(){
         
         String message = "Welcome to ";
-        output(message + TITLE, TITLE, "island.gif");
+        output(message + TITLE + "!", TITLE, null);
     }
     
     public static void program(){
         
         if(initialSituation() == true){
             
+            //runs beach option
             if(beachOption() == true){
                 
                 beachBlock();
             }
-        
             else{
                
-               stayOnIsland();
-               if(jungleOption() == true){
+                stayOnIsland();
+                if(jungleOption() == true){
                    
-                   jungleBlock();
-               }
+                    jungleBlock();
+                }
+                else{
+                   
+                    keepExploring();
+                    villageBlock();
+                }
             }           
         }
         else{
             
+            //runs jungle option
             if(jungleOption() == true){
                 
                 jungleBlock();
             }
-        }
+            else{
+                
+                keepExploring();
+                villageBlock();
+            }    
+        }            
     }
    
     public static boolean initialSituation(){
@@ -65,7 +77,7 @@ public class FinalProject30S {
                 0, 
                 TextEN.textEN, 
                 choices, 
-                "stranded.gif"
+                null
         );
         
         if (userChoice == 0){
@@ -101,8 +113,22 @@ public class FinalProject30S {
             else{
                 
                 keepExploring();
-                
+                villageBlock();
             }
+        }
+    }
+    
+    public static void villageBlock(){
+        
+       if(village()== true){
+                    
+            enterVillage();
+            //village ending
+        }
+        else{
+           
+            fatigue();
+            //dying of starvation
         }
     }
     
@@ -116,7 +142,7 @@ public class FinalProject30S {
                 1, 
                 TextEN.textEN,
                 choices, 
-                "crashedPlane.png"
+                null
         );
 
         if (userChoice == 0){
@@ -136,7 +162,7 @@ public class FinalProject30S {
                 6, 
                 TextEN.textEN, 
                 choices, 
-                "darkCave.jpg"
+                null
         );
 
         if (userChoice == 0){
@@ -156,7 +182,7 @@ public class FinalProject30S {
                 2, 
                 TextEN.textEN, 
                 choices, 
-                "fishermen.gif"
+                null
         );
         
         if (userChoice == 0){
@@ -169,13 +195,13 @@ public class FinalProject30S {
     public static void stayOnIsland(){
         
         String message = TextEN.output(3);
-        output(message, TITLE, "island.gif");
+        output(message, TITLE, null);
     }
     
     public static void rescue(){
         
         String message = TextEN.output(5);
-        output(message, TITLE, "rescue.gif");
+        output(message, TITLE, null);
         endingScreen();
         System.exit(0);
     }
@@ -183,7 +209,7 @@ public class FinalProject30S {
     public static void lostAtSea(){
         
         String message = TextEN.output(4);
-        output(message, TITLE, "lostAtSea.jpg");
+        output(message, TITLE, null);
         endingScreen();
         System.exit(0);
 
@@ -205,7 +231,6 @@ public class FinalProject30S {
         if (userChoice == 0){
             return true;
         }
-        
         return false;
     }
     
@@ -219,7 +244,7 @@ public class FinalProject30S {
     
     public static boolean inhabitCave(){
         
-    String[] choices = new String[2];
+        String[] choices = new String[2];
         choices[0] = "Live in the cave";
         choices[1] = "Continue exploring";
         
@@ -253,11 +278,49 @@ public class FinalProject30S {
         
     }
     
+    public static boolean village(){
+        
+        String[] choices = new String[2];
+        choices[0] = "Enter the village";
+        choices[1] = "Continue exploring";
+        
+        int userChoice = userOptions(
+                12, 
+                TextEN.textEN, 
+                choices, 
+                null
+        );
+        
+        if (userChoice == 0){
+            return true;
+        }
+        
+        return false;        
+    }
+    
+    public static void enterVillage(){
+        
+        String message = TextEN.output(13);
+        output(message, TITLE, null);
+        
+        endingScreen();
+        System.exit(0);
+    }
+    
+    public static void fatigue(){
+        
+        String message = TextEN.output(14);
+        output(message, TITLE, null);
+        
+        endingScreen();
+        System.exit(0);
+    }
+    
     public static void endingScreen(){
         
         String ending = TextEN.output(15);
 
-        output(ending, TITLE, "island.gif");
+        output(ending, TITLE, null);
     }
     
     public static int userOptions(int index, String[] text, String[] choices, String fileName){
