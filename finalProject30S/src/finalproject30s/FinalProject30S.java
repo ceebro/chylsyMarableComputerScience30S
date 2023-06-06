@@ -18,7 +18,10 @@ public class ChylsyMarableIslandAdventure {
     public static void main(String[] args) {
 
         welcomeScreen();
+        
+        do{
         program();
+        } while (playAgain() == true);
 
     }
 
@@ -195,15 +198,17 @@ public class ChylsyMarableIslandAdventure {
         String message = TextEN.output(5);
         output(message, TITLE, "rescue.gif");
         endingScreen();
-        System.exit(0);
+        
+        playAgain();
     }
 
     public static void lostAtSea() {
 
         String message = TextEN.output(4);
-        output(message, TITLE, "lostAtSea.gif");
+        output(message, TITLE, "lostAtSea.jpg");
         endingScreen();
-        System.exit(0);
+        
+        playAgain();
 
     }
 
@@ -231,7 +236,6 @@ public class ChylsyMarableIslandAdventure {
         String message = TextEN.output(8);
         output(message, TITLE, "bearMauling.");
         endingScreen();
-        System.exit(0);
     }
 
     public static boolean inhabitCave() {
@@ -260,7 +264,8 @@ public class ChylsyMarableIslandAdventure {
         output(message, TITLE, "caveEnding.jpg");
 
         endingScreen();
-        System.exit(0);
+        
+        playAgain();
     }
 
     public static void keepExploring() {
@@ -296,7 +301,7 @@ public class ChylsyMarableIslandAdventure {
         output(message, TITLE, "villageEnding.gif");
 
         endingScreen();
-        System.exit(0);
+        playAgain();
     }
 
     public static void fatigue() {
@@ -305,7 +310,32 @@ public class ChylsyMarableIslandAdventure {
         output(message, TITLE, "exhausted.gif");
 
         endingScreen();
-        System.exit(0);
+        playAgain();
+    }
+    
+    public static boolean playAgain(){
+        
+        //java.awt.Component parentComponent, java.lang.Object message,
+        //java.lang.String title, int optionType, int messageType, Icon icon)
+        String message = TextEN.output(15) + "\n" + TextEN.output(16);
+        
+        int option = JOptionPane.showConfirmDialog(
+                null,
+                message,
+                TITLE,
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
+                "island.jpg"
+        );
+        
+        if(option == JOptionPane.YES_OPTION){
+            
+            return true;
+        }    
+        else{
+            
+            return false;
+        }    
     }
 
     public static void endingScreen() {
