@@ -1,5 +1,5 @@
 
-package finalproject30s;
+package chylsymarableislandadventure;
 
 /*
  * TextEN - description
@@ -14,7 +14,7 @@ public class TextEN
     
     public TextEN(){
         
-        textEN = new String[16];
+        textEN = new String[17];
         
         // <editor-fold>
         textEN[0] = "       After a boating accident, you are left stranded on a "
@@ -85,8 +85,10 @@ public class TextEN
         //starvation ending
         
         textEN[15] = "Thank you for playing Island Adventure!";
+        
+        textEN[16] = "Do you want to play again?";
         // </editor-fold>
-     
+        
     }
     
     public static String output(int index){
