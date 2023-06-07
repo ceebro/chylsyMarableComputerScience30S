@@ -2,7 +2,8 @@
 package chylsymarableislandadventure;
 
 /*
- * TextEN - description
+ * TextEN - A class that stores the english text within the Island Adventure
+ * program.
  * 
  * @author Chylsy Marable
  * @since 3-Jun-2023
