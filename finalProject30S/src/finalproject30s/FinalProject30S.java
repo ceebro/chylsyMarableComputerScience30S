@@ -12,6 +12,11 @@ import javax.swing.*;
 public class ChylsyMarableIslandAdventure {
 
     public static final String TITLE = "Island Adventure";
+    
+    private static String[] sentences;
+    private static String[] choices1;
+    
+    
 
     /**
      * @param args the command line arguments
@@ -31,10 +36,16 @@ public class ChylsyMarableIslandAdventure {
 
         String message = "Welcome to ";
         output(message + TITLE + "!", TITLE, "island.gif");
+        
+        // Add coide to choose
+        sentences = TextEN.textEN;
+        choices1 = TextEN.choices1;
+        
     }
 
     public static void program() {
 
+        
         if (initialSituation() == true) {
 
             //runs beach option
@@ -53,7 +64,7 @@ public class ChylsyMarableIslandAdventure {
                     villageBlock();
                 }
             }
-        } else {
+        } else  {
 
             //runs jungle option
             if (jungleOption() == true) {
@@ -65,25 +76,21 @@ public class ChylsyMarableIslandAdventure {
                 villageBlock();
             }
         }
+        
     }
 
     public static boolean initialSituation() {
 
-        String[] choices = new String[2];
-        choices[0] = "Explore the beach";
-        choices[1] = "Explore the jungle";
-
         int userChoice = userOptions(
             0,
-            TextEN.textEN,
-            choices,
+            sentences,
+            choices1,
             "stranded.gif"
         );
 
         if (userChoice == 0) {
             return true;
         }
-
         return false;
     }
 
@@ -143,7 +150,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             1,
-            TextEN.textEN,
+            sentences,
             choices,
             "crashedPlane.png"
         );
@@ -163,7 +170,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             6,
-            TextEN.textEN,
+            sentences,
             choices,
             "darkCave.jpg"
         );
@@ -171,7 +178,7 @@ public class ChylsyMarableIslandAdventure {
         if (userChoice == 0) {
             return true;
         }
-
+             
         return false;
     }
 
@@ -183,7 +190,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             2,
-            TextEN.textEN,
+            sentences,
             choices,
             "fishermen.gif"
         );
@@ -205,14 +212,12 @@ public class ChylsyMarableIslandAdventure {
 
         String message = TextEN.output(5);
         output(message, TITLE, "rescue.gif");
-        endingScreen();
     }
     
     public static void lostAtSea() {
 
         String message = TextEN.output(4);
         output(message, TITLE, "lostAtSea.jpg");
-        endingScreen();
     }
 
     public static boolean fightBear() {
@@ -223,7 +228,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             7,
-            TextEN.textEN,
+            sentences,
             choices,
             "caveBear.jpg"
         );
@@ -248,7 +253,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             9,
-            TextEN.textEN,
+            sentences,
             choices,
             "lushCave.jpg"
         );
@@ -264,8 +269,6 @@ public class ChylsyMarableIslandAdventure {
 
         String message = TextEN.output(10);
         output(message, TITLE, "caveEnding.jpg");
-
-        endingScreen();
     }
 
     public static void keepExploring() {
@@ -283,7 +286,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             12,
-            TextEN.textEN,
+            sentences,
             choices,
             "spottedVillage.gif"
         );
@@ -299,16 +302,12 @@ public class ChylsyMarableIslandAdventure {
 
         String message = TextEN.output(13);
         output(message, TITLE, "villageEnding.gif");
-
-        endingScreen();
     }
 
     public static void fatigue() {
 
         String message = TextEN.output(14);
         output(message, TITLE, "exhausted.gif");
-
-        endingScreen();
     }
     
     public static boolean playAgain(){
@@ -317,14 +316,20 @@ public class ChylsyMarableIslandAdventure {
         
         ImageIcon icon = new ImageIcon("playAgain.gif");
         
-        int option = JOptionPane.showConfirmDialog(
-                null,
-                message,
-                TITLE,
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.PLAIN_MESSAGE,
-                icon
-        );
+        int option;
+                
+        do {
+        
+            option = JOptionPane.showConfirmDialog(
+                    null,
+                    message,
+                    TITLE,
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.PLAIN_MESSAGE,
+                    icon
+            );
+        
+        } while(option == -1);
         
         if(option == JOptionPane.YES_OPTION){
             
@@ -351,20 +356,29 @@ public class ChylsyMarableIslandAdventure {
 
         ImageIcon icon = new ImageIcon(fileName);
 
-        Object userChoice = JOptionPane.showInputDialog(
-                null,
-                message,
-                TITLE,
-                JOptionPane.PLAIN_MESSAGE,
-                icon,
-                choices,
-                choices[0]
-        );
+        Object userChoice;
+        
+        do {
+        
+            userChoice = JOptionPane.showInputDialog(
+                    null,
+                    message,
+                    TITLE,
+                    JOptionPane.PLAIN_MESSAGE,
+                    icon,
+                    choices,
+                    choices[0]
+            );
 
+        } while(userChoice == null);
+        
+        
         if (userChoice == choices[0]) {
             return 0;
         }
+        
         return 1;
+        
     }
 
     public static void output(String message, String title, String fileName) {
