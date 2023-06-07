@@ -2,8 +2,7 @@
 package chylsymarableislandadventure;
 
 /*
- * TextEN - A class that stores the english text within the Island Adventure
- * program.
+ * TextEN - description
  * 
  * @author Chylsy Marable
  * @since 3-Jun-2023
@@ -12,6 +11,11 @@ public class TextEN
         
 {
     public static String[] textEN;
+    
+    public static String[] choices1 =  {
+        "Explore the beach", 
+        "Explore the jungle"
+    };
     
     public TextEN(){
         
