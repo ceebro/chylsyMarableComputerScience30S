@@ -3,7 +3,8 @@ package chylsymarableislandadventure;
 import javax.swing.*;
 
 /*
- * ChylsyMarableIslandAdventure
+ * ChylsyMarableIslandAdventure -
+ * A 'choose your own adventure' program that is powered by JOptionPanes.
  * 
  * @author Chylsy Marable
  * @since 3-Jun-2023
@@ -22,7 +23,8 @@ public class ChylsyMarableIslandAdventure {
         do{
         program();
         } while (playAgain() == true);
-
+        
+        endingScreen();
     }
 
     public static void welcomeScreen() {
@@ -112,6 +114,12 @@ public class ChylsyMarableIslandAdventure {
                 villageBlock();
             }
         }
+        else{
+            
+            mauledByBear();
+            //bear mauling ending
+            //you can't outrun bears
+        }    
     }
 
     public static void villageBlock() {
@@ -198,18 +206,13 @@ public class ChylsyMarableIslandAdventure {
         String message = TextEN.output(5);
         output(message, TITLE, "rescue.gif");
         endingScreen();
-        
-        playAgain();
     }
-
+    
     public static void lostAtSea() {
 
         String message = TextEN.output(4);
         output(message, TITLE, "lostAtSea.jpg");
         endingScreen();
-        
-        playAgain();
-
     }
 
     public static boolean fightBear() {
@@ -234,8 +237,7 @@ public class ChylsyMarableIslandAdventure {
     public static void mauledByBear() {
 
         String message = TextEN.output(8);
-        output(message, TITLE, "bearMauling.");
-        endingScreen();
+        output(message, TITLE, "bearMauling.gif");
     }
 
     public static boolean inhabitCave() {
@@ -264,8 +266,6 @@ public class ChylsyMarableIslandAdventure {
         output(message, TITLE, "caveEnding.jpg");
 
         endingScreen();
-        
-        playAgain();
     }
 
     public static void keepExploring() {
@@ -301,7 +301,6 @@ public class ChylsyMarableIslandAdventure {
         output(message, TITLE, "villageEnding.gif");
 
         endingScreen();
-        playAgain();
     }
 
     public static void fatigue() {
@@ -310,14 +309,13 @@ public class ChylsyMarableIslandAdventure {
         output(message, TITLE, "exhausted.gif");
 
         endingScreen();
-        playAgain();
     }
     
     public static boolean playAgain(){
         
-        //java.awt.Component parentComponent, java.lang.Object message,
-        //java.lang.String title, int optionType, int messageType, Icon icon)
         String message = TextEN.output(15) + "\n" + TextEN.output(16);
+        
+        ImageIcon icon = new ImageIcon("playAgain.gif");
         
         int option = JOptionPane.showConfirmDialog(
                 null,
@@ -325,7 +323,7 @@ public class ChylsyMarableIslandAdventure {
                 TITLE,
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.PLAIN_MESSAGE,
-                "island.jpg"
+                icon
         );
         
         if(option == JOptionPane.YES_OPTION){
@@ -335,7 +333,7 @@ public class ChylsyMarableIslandAdventure {
         else{
             
             return false;
-        }    
+        }
     }
 
     public static void endingScreen() {
