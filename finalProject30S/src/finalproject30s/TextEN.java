@@ -7,17 +7,19 @@ package chylsymarableislandadventure;
  * @author Chylsy Marable
  * @since 3-Jun-2023
 */
-public class TextEN
+public class Text
         
 {
     public static String[] textEN;
+    
+    public static String[] textFR;
     
     public static String[] choices1 =  {
         "Explore the beach", 
         "Explore the jungle"
     };
     
-    public TextEN(){
+    public Text(){
         
         textEN = new String[17];
         
@@ -94,6 +96,10 @@ public class TextEN
         textEN[16] = "Do you want to play again?";
         // </editor-fold>
         
+        //<editor-fold>
+        textFR = new String [17];
+        
+        //</editor-fold>
     }
     
     public static String output(int index){
