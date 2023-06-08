@@ -14,7 +14,7 @@ public class ChylsyMarableIslandAdventure {
     public static final String TITLE = "Island Adventure";
     
     private static String[] sentences;
-    private static String[] choices1;
+    private static String[] choices;
     
     
 
@@ -32,14 +32,48 @@ public class ChylsyMarableIslandAdventure {
         endingScreen();
     }
 
-    public static void welcomeScreen() {
+    public static String[] welcomeScreen() {
 
         String message = "Welcome to ";
         output(message + TITLE + "!", TITLE, "island.gif");
         
-        // Add coide to choose
-        sentences = TextEN.textEN;
-        choices1 = TextEN.choices1;
+        String[] language = new String[2];
+        language[0] = "English / EN";
+        language[1] = "Français / FR";
+        
+        ImageIcon icon = new ImageIcon("island.gif");
+        
+        String selectLanguage = "Please select the story language";
+      
+        Object languageChoice;
+
+        do{
+            
+        
+        languageChoice = JOptionPane.showInputDialog(
+                null,
+                selectLanguage,
+                TITLE, 
+                JOptionPane.PLAIN_MESSAGE,
+                icon, 
+                language, 
+                language[0]);
+        
+        } while (languageChoice == null);
+        
+        if(languageChoice == language[0]){
+            
+            sentences = Text.textEN;
+            return sentences;
+        }
+        else{
+            
+            sentences = Text.textFR;
+            return sentences;
+        }
+        
+//        sentences = Text.textEN;
+//        choices1 = Text.choices1;
         
     }
 
@@ -84,7 +118,7 @@ public class ChylsyMarableIslandAdventure {
         int userChoice = userOptions(
             0,
             sentences,
-            choices1,
+            choices,
             "stranded.gif"
         );
 
@@ -204,19 +238,19 @@ public class ChylsyMarableIslandAdventure {
 
     public static void stayOnIsland() {
 
-        String message = TextEN.output(3);
+        String message = Text.output(3);
         output(message, TITLE, "stayingOnIsland.gif");
     }
 
     public static void rescue() {
 
-        String message = TextEN.output(5);
+        String message = Text.output(5);
         output(message, TITLE, "rescue.gif");
     }
     
     public static void lostAtSea() {
 
-        String message = TextEN.output(4);
+        String message = Text.output(4);
         output(message, TITLE, "lostAtSea.jpg");
     }
 
@@ -241,7 +275,7 @@ public class ChylsyMarableIslandAdventure {
 
     public static void mauledByBear() {
 
-        String message = TextEN.output(8);
+        String message = Text.output(8);
         output(message, TITLE, "bearMauling.gif");
     }
 
@@ -267,13 +301,13 @@ public class ChylsyMarableIslandAdventure {
 
     private static void caveEnding() {
 
-        String message = TextEN.output(10);
+        String message = Text.output(10);
         output(message, TITLE, "caveEnding.jpg");
     }
 
     public static void keepExploring() {
 
-        String message = TextEN.output(11);
+        String message = Text.output(11);
         output(message, TITLE, "keepExploring.gif");
 
     }
@@ -300,19 +334,19 @@ public class ChylsyMarableIslandAdventure {
 
     public static void enterVillage() {
 
-        String message = TextEN.output(13);
+        String message = Text.output(13);
         output(message, TITLE, "villageEnding.gif");
     }
 
     public static void fatigue() {
 
-        String message = TextEN.output(14);
+        String message = Text.output(14);
         output(message, TITLE, "exhausted.gif");
     }
     
     public static boolean playAgain(){
         
-        String message = TextEN.output(15) + "\n" + TextEN.output(16);
+        String message = Text.output(15) + "\n" + Text.output(16);
         
         ImageIcon icon = new ImageIcon("playAgain.gif");
         
@@ -343,14 +377,14 @@ public class ChylsyMarableIslandAdventure {
 
     public static void endingScreen() {
 
-        String ending = TextEN.output(15);
+        String ending = Text.output(15);
 
         output(ending, TITLE, "island.gif");
     }
 
     public static int userOptions(int index, String[] text, String[] choices, String fileName) {
 
-        TextEN textEN = new TextEN();
+        Text textEN = new Text();
 
         String message = textEN.output(index);
 
