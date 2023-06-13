@@ -16,7 +16,7 @@ public class TextEN
         "Explore the jungle"
     };
     
-    public TextEN(){
+    public static void build() {
         
         textEN = new String[17];
         
