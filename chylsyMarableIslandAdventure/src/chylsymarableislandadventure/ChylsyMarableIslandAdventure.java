@@ -1,11 +1,10 @@
 package chylsymarableislandadventure;
 
-import java.util.Arrays;
 import javax.swing.*;
 
 /*
  * ChylsyMarableIslandAdventure -
- * A 'choose your own adventure' program that is powered by JOptionPanes.
+ * A 'choose your own adventure' program powered by JOptionPanes.
  * 
  * @author Chylsy Marable
  * @since 3-Jun-2023
@@ -13,27 +12,39 @@ import javax.swing.*;
 public class ChylsyMarableIslandAdventure {
 
     public static final String TITLE = "Island Adventure";
-    
-//    private static String[] sentences;
-    
+    public static String[] sentences;
+        
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
+        TextEN.build();
+        TextFR.build();
+        
         welcomeScreen();
         
         do{
-        program();
+            
+            language();
+            program();
         } while (playAgain() == true);
         
         endingScreen();
     }
 
-    public static String[] welcomeScreen() {
+    public static void welcomeScreen() {
 
         String message = "Welcome to ";
-        output(message + TITLE + "!", TITLE, "island.gif");
+        String messageFR = "Bienvenue à ";
+        output(message + TITLE + "! \n" + messageFR + TITLE + "!", 
+                TITLE, 
+                "island.gif"
+        );
+        
+    }
+    
+    public static String[] language(){
         
         String[] language = new String[2];
         language[0] = "English / EN";
@@ -59,14 +70,19 @@ public class ChylsyMarableIslandAdventure {
         
         } while (languageChoice == null);
         
-        if(languageChoice == language[0]){
+        String choice = languageChoice.toString();
+        
+        if(choice.equals(language[0])){
             
-            return TextEN.textEN;
+            sentences = TextEN.textEN;
+            return sentences;
         }
         else{
             
-            return TextFR.textFR;
+            sentences = TextFR.textFR;
+            return sentences;
         }    
+        
     }
 
     public static void program() {
@@ -80,13 +96,13 @@ public class ChylsyMarableIslandAdventure {
                 beachBlock();
             } else {
 
-                stayOnIsland();
+                stayOnIsland(sentences);
                 if (jungleOption() == true) {
 
                     jungleBlock();
                 } else {
 
-                    keepExploring();
+                    keepExploring(sentences);
                     villageBlock();
                 }
             }
@@ -98,7 +114,7 @@ public class ChylsyMarableIslandAdventure {
                 jungleBlock();
             } else {
 
-                keepExploring();
+                keepExploring(sentences);
                 villageBlock();
             }
         }
@@ -113,6 +129,7 @@ public class ChylsyMarableIslandAdventure {
         
         int userChoice = userOptions(
             0,
+            sentences,
             choices,
             "stranded.gif"
         );
@@ -127,11 +144,11 @@ public class ChylsyMarableIslandAdventure {
 
         if (fishermen() == true) {
 
-            rescue();
+            rescue(sentences);
             //rescue ending
         } else {
 
-            lostAtSea();
+            lostAtSea(sentences);
             //lost at sea ending
         }
     }
@@ -142,17 +159,17 @@ public class ChylsyMarableIslandAdventure {
 
             if (inhabitCave() == true) {
 
-                caveEnding();
+                caveEnding(sentences);
                 //minecraft ending
             } else {
 
-                keepExploring();
+                keepExploring(sentences);
                 villageBlock();
             }
         }
         else{
             
-            mauledByBear();
+            mauledByBear(sentences);
             //bear mauling ending
             //you can't outrun bears
         }    
@@ -162,11 +179,11 @@ public class ChylsyMarableIslandAdventure {
 
         if (village() == true) {
 
-            enterVillage();
+            enterVillage(sentences);
             //village ending
         } else {
 
-            fatigue();
+            fatigue(sentences);
             //dying of starvation
         }
     }
@@ -179,6 +196,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             1,
+            sentences,
             choices,
             "crashedPlane.png"
         );
@@ -198,6 +216,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             6,
+            sentences,
             choices,
             "darkCave.jpg"
         );
@@ -217,6 +236,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             2,
+            sentences,
             choices,
             "fishermen.gif"
         );
@@ -228,21 +248,24 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
-    public static void stayOnIsland() {
+    public static void stayOnIsland(String[] text) {
 
-        String message = TextEN.output(3);
+        text = sentences;
+        String message = text[3];
         output(message, TITLE, "stayingOnIsland.gif");
     }
 
-    public static void rescue() {
+    public static void rescue(String[] text) {
 
-        String message = TextEN.output(5);
+        text = sentences;
+        String message = text[5];
         output(message, TITLE, "rescue.gif");
     }
     
-    public static void lostAtSea() {
+    public static void lostAtSea(String[] text) {
 
-        String message = TextEN.output(4);
+        text = sentences;
+        String message = text[4];
         output(message, TITLE, "lostAtSea.jpg");
     }
 
@@ -254,6 +277,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             7,
+            sentences,
             choices,
             "caveBear.jpg"
         );
@@ -264,7 +288,7 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
-    public static void mauledByBear() {
+    public static void mauledByBear(String[] text) {
 
         String message = TextEN.output(8);
         output(message, TITLE, "bearMauling.gif");
@@ -278,6 +302,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             9,
+            sentences,
             choices,
             "lushCave.jpg"
         );
@@ -289,15 +314,17 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
-    private static void caveEnding() {
+    private static void caveEnding(String[] text) {
 
-        String message = TextEN.output(10);
+        text = sentences;
+        String message = text[10];
         output(message, TITLE, "caveEnding.jpg");
     }
 
-    public static void keepExploring() {
+    public static void keepExploring(String[] text) {
 
-        String message = TextEN.output(11);
+        text = sentences;
+        String message = text[11];
         output(message, TITLE, "keepExploring.gif");
 
     }
@@ -310,6 +337,7 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
             12,
+            sentences,
             choices,
             "spottedVillage.gif"
         );
@@ -321,15 +349,17 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
-    public static void enterVillage() {
+    public static void enterVillage(String[] text) {
 
-        String message = TextEN.output(13);
+        text = sentences;
+        String message = text[13];
         output(message, TITLE, "villageEnding.gif");
     }
 
-    public static void fatigue() {
+    public static void fatigue(String[] text) {
 
-        String message = TextEN.output(14);
+        text = sentences;
+        String message = text[14];
         output(message, TITLE, "exhausted.gif");
     }
     
@@ -371,18 +401,10 @@ public class ChylsyMarableIslandAdventure {
         output(ending, TITLE, "island.gif");
     }
 
-    public static int userOptions(int index, String[] choices, String fileName) {
+    public static int userOptions(int index, String[] text, String[] choices, String fileName) {
 
-        String message;
+        String message = sentences[index];
         
-        if(welcomeScreen() == TextEN.textEN){
-            
-            message = TextEN.output(index);
-        } else {
-            
-            message = TextFR.output(index);
-        }
-
         ImageIcon icon = new ImageIcon(fileName);
 
         Object userChoice;
@@ -407,7 +429,6 @@ public class ChylsyMarableIslandAdventure {
         }
         
         return 1;
-        
     }
 
     public static void output(String message, String title, String fileName) {
