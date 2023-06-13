@@ -9,7 +9,7 @@ public class TextFR {
     
     public static String[] textFR;
     
-    public TextFR(){
+    public static void build(){
         
         textFR = new String [17];
         
