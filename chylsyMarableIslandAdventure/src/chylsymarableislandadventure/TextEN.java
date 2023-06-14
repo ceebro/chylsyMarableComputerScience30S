@@ -7,14 +7,9 @@ package chylsymarableislandadventure;
  * @author Chylsy Marable
  * @since 3-Jun-2023
 */
-public class TextEN
-        
-{
+public class TextEN {
+    
     public static String[] textEN;
-    public static String[] choices1 =  {
-        "Explore the beach", 
-        "Explore the jungle"
-    };
     
     public static void build() {
         
@@ -94,10 +89,4 @@ public class TextEN
         // </editor-fold>
         
     }
-    
-    public static String output(int index){
-        
-        return textEN[index];
-    }
-        
 }
