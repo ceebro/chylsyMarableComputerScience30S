@@ -1,10 +1,12 @@
 
 package chylsymarableislandadventure;
 
-/**
- *
- * @author c.marable
- */
+/*
+ * TextFR - French text in 'Island Adventure'
+ * 
+ * @author Chylsy Marable
+ * @since 3-Jun-2023
+*/
 public class TextFR {
     
     public static String[] textFR;
@@ -18,7 +20,7 @@ public class TextFR {
         textFR[0] = "   Après un accident de bateau, vous arrivez sur une île "
                 + "\n mystérieuse. Vous avez besoin de collecter des ressources."
                 + "\n Vous avez le choix d’explorer la plage ou la jungle. Lequel"
-                + "\n choisissez-vous?";
+                + "\n explorez-vous?";
         //sit initiale
         
         textFR[1] = "   Vous marchez à côté de la plage et vous trouvez un avion"
@@ -27,7 +29,7 @@ public class TextFR {
         
         textFR[2] = "   Vous quittez l’île en utilisant le bateau de sauvetage."
                 + "\n Vous flottez dans l’océan et, un jour un bateau des pêcheurs"
-                + "\n vous découvertes. Acceptez-vous leur offre de vous sauver?";
+                + "\n vous trouvez. Acceptez-vous leur offre de vous sauver?";
         
         textFR[3] = "   Vous choisissez de rester sur l’île, potentiellement pour"
                 + "\n toujours. Au lieu d’explorer la plage, vous allez dans la "
@@ -47,12 +49,6 @@ public class TextFR {
         textFR[16] = "";
 
         //</editor-fold>
-
-    }
-    
-     public static String output(int index){
         
-        return textFR[index];
     }
-
 }
