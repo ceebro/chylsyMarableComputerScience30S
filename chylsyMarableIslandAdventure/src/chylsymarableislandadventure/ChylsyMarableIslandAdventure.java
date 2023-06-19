@@ -34,17 +34,25 @@ public class ChylsyMarableIslandAdventure {
         endingScreen();
     }
 
+    /**
+     * Displays the welcome screen
+     */
     public static void welcomeScreen() {
 
-        String message = "Welcome to ";
-        String messageFR = "Bienvenue à ";
-        output(message + TITLE + "! \n" + messageFR + TITLE + "!",
-                TITLE,
-                "island.gif"
+        String welcome = "Welcome to ";
+        String welcomeFR = "Bienvenue à ";
+        String welcomeMessage = welcome = welcome + TITLE + "! \n" + welcomeFR + TITLE + "!";
+        
+        output(welcomeMessage, "island.gif"
         );
 
     }
 
+    /**
+     * Asks users to set the story language
+     * @return - returns array of text (the TextEN and TextFR are instantiated in
+     * the main method; they fill the sentences array0
+     */
     public static String[] language() {
 
         String[] language = new String[2];
@@ -85,6 +93,10 @@ public class ChylsyMarableIslandAdventure {
 
     }
 
+    /**
+     * The story method
+     * Will proceed if the methods below equal true / the user selected choices[0]
+     */
     public static void program() {
 
         if (initialSituation() == true) {
@@ -95,13 +107,15 @@ public class ChylsyMarableIslandAdventure {
                 beachBlock();
             } else {
 
-                stayOnIsland(sentences);
+                stayOnIsland();
                 if (jungleOption() == true) {
 
                     jungleBlock();
+                    //program jumps to jungle
+                    
                 } else {
 
-                    keepExploring(sentences);
+                    keepExploring();
                     villageBlock();
                 }
             }
@@ -113,12 +127,17 @@ public class ChylsyMarableIslandAdventure {
                 jungleBlock();
             } else {
 
-                keepExploring(sentences);
+                keepExploring();
                 villageBlock();
             }
         }
     }
 
+    /**
+     * Initial situation (the user starts on the island's shore)
+     * @return - returns true or false (true will run the beach options, 
+     * false will run jungle)
+     */
     public static boolean initialSituation() {
 
         choices[0] = "Explore the beach";
@@ -132,7 +151,6 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
                 0,
-                sentences,
                 choices,
                 "stranded.gif"
         );
@@ -143,53 +161,70 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
+    /**
+     * Potential endings for the beach block
+     */
     public static void beachBlock() {
 
         if (fishermen() == true) {
 
-            rescue(sentences);
+            rescue();
             //rescue ending
         } else {
 
-            lostAtSea(sentences);
+            lostAtSea();
             //lost at sea ending
         }
     }
 
+    /**
+     * Endings for jungle block except for when the user continues exploring
+     * (will run village block)
+     */
     public static void jungleBlock() {
 
         if (fightBear() == true) {
 
             if (inhabitCave() == true) {
 
-                caveEnding(sentences);
-                //minecraft ending
+                caveEnding();
+                //minecraft ending (user lives in cave and plays minecraft 
+                //in real life)
             } else {
 
-                keepExploring(sentences);
+                keepExploring();
                 villageBlock();
+                //program jumps to village
             }
         } else {
 
-            mauledByBear(sentences);
+            mauledByBear();
             //bear mauling ending
             //you can't outrun bears
         }
     }
 
+    /**
+     * Endings for village block
+     */
     public static void villageBlock() {
 
         if (village() == true) {
 
-            enterVillage(sentences);
+            enterVillage();
             //village ending
         } else {
 
-            fatigue(sentences);
-            //dying of starvation
+            fatigue();
+            //dying of starvation because the user kept exploring
         }
     }
 
+    /**
+     * Prompts the user to decide wether to stay on the island or deploy the 
+     * life raft
+     * @return - returns true or false
+     */
     public static boolean beachOption() {
 
         choices[0] = "Deploy the life raft";
@@ -203,7 +238,6 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
                 1,
-                sentences,
                 choices,
                 "crashedPlane.png"
         );
@@ -215,6 +249,10 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
+    /**
+     * Prompts the user to decide between entering the cave or continue walking
+     * @return - returns true or false
+     */
     public static boolean jungleOption() {
 
         choices[0] = "Enter the cave";
@@ -228,7 +266,6 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
                 6,
-                sentences,
                 choices,
                 "darkCave.jpg"
         );
@@ -240,6 +277,11 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
+    /**
+     * Prompts the user to decide between boarding the fishing boat or to keep
+     * floating out at sea
+     * @return - returns true or false
+     */
     public static boolean fishermen() {
 
         choices[0] = "Board the fishing boat";
@@ -253,7 +295,6 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
                 2,
-                sentences,
                 choices,
                 "fishermen.gif"
         );
@@ -265,27 +306,40 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
-    public static void stayOnIsland(String[] text) {
+    /**
+     * Outputs a message dialog (confirms the user's choice to stay on the island)
+     */
+    public static void stayOnIsland() {
 
-        text = sentences;
-        String message = text[3];
-        output(message, TITLE, "stayingOnIsland.gif");
+        String message = sentences[3];
+        output(message, "stayingOnIsland.gif");
+        //program will jump to jungle option
     }
 
-    public static void rescue(String[] text) {
+    /**
+     * Outputs a message dialog (user returns to society)
+     */
+    public static void rescue() {
 
-        text = sentences;
-        String message = text[5];
-        output(message, TITLE, "rescue.gif");
+        //rescue ending
+        String message = sentences[5];
+        output(message, "rescue.gif");
     }
 
-    public static void lostAtSea(String[] text) {
-
-        text = sentences;
-        String message = text[4];
-        output(message, TITLE, "lostAtSea.jpg");
+    /**
+     * Outputs a message dialog (user is lost at sea)
+     */
+    public static void lostAtSea() {
+        
+        //lost at sea ending
+        String message = sentences[4];
+        output(message, "lostAtSea.jpg");
     }
 
+    /**
+     * Prompts the user to fight the bear or run away
+     * @return - returns true or false
+     */
     public static boolean fightBear() {
 
         choices[0] = "Fight the bear";
@@ -293,13 +347,12 @@ public class ChylsyMarableIslandAdventure {
 
         if (sentences == TextFR.textFR) {
 
-            choices[0] = "Combattre l;ours";
+            choices[0] = "Combattre l'ours";
             choices[1] = "S'en fuir";
         }
 
         int userChoice = userOptions(
                 7,
-                sentences,
                 choices,
                 "caveBear.jpg"
         );
@@ -310,12 +363,20 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
-    public static void mauledByBear(String[] text) {
-
+    /**
+     * Outputs a message dialog (user is mauled by bear)
+     */
+    public static void mauledByBear() {
+        
+        //bear mauling ending
         String message = sentences[8];
-        output(message, TITLE, "bearMauling.gif");
+        output(message, "bearMauling.gif");
     }
 
+    /**
+     * Prompts the user to choose between occupying the cave or continue exploring
+     * @return - returns true or false
+     */
     public static boolean inhabitCave() {
 
         choices[0] = "Live in the cave";
@@ -329,7 +390,6 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
                 9,
-                sentences,
                 choices,
                 "lushCave.jpg"
         );
@@ -341,21 +401,30 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
-    private static void caveEnding(String[] text) {
+    /**
+     * Outputs a message dialog (user chooses to live in the cave)
+     */
+    private static void caveEnding() {
 
-        text = sentences;
-        String message = text[10];
-        output(message, TITLE, "caveEnding.jpg");
+        //minecraft ending yayy
+        String message = sentences[10];
+        output(message, "caveEnding.jpg");
     }
 
-    public static void keepExploring(String[] text) {
+    /**
+     * Outputs a message dialog (confirms the user's choice to keep exploring)
+     */
+    public static void keepExploring() {
 
-        text = sentences;
-        String message = text[11];
-        output(message, TITLE, "keepExploring.gif");
-
+        String message = sentences[11];
+        output(message, "keepExploring.gif");
+        //program jumps to village option
     }
 
+    /**
+     * Prompts the user to choose between entering the village or walking away
+     * @return - returns true or false
+     */
     public static boolean village() {
 
         choices[0] = "Enter the village";
@@ -369,7 +438,6 @@ public class ChylsyMarableIslandAdventure {
 
         int userChoice = userOptions(
                 12,
-                sentences,
                 choices,
                 "spottedVillage.gif"
         );
@@ -381,20 +449,29 @@ public class ChylsyMarableIslandAdventure {
         return false;
     }
 
-    public static void enterVillage(String[] text) {
+    /**
+     * Outputs a message dialog (the user becomes part of the village)
+     */
+    public static void enterVillage() {
 
-        text = sentences;
-        String message = text[13];
-        output(message, TITLE, "villageEnding.gif");
+        String message = sentences[13];
+        output(message, "villageEnding.gif");
     }
 
-    public static void fatigue(String[] text) {
+    /**
+     * Outputs a message dialog (the user dies of exhaustion)
+     */
+    public static void fatigue() {
 
-        text = sentences;
-        String message = text[14];
-        output(message, TITLE, "exhausted.gif");
+        //fatigue ending
+        String message = sentences[14];
+        output(message, "exhausted.gif");
     }
 
+    /**
+     * Asks the user if they want to play again
+     * @return - returns true or false
+     */
     public static boolean playAgain() {
 
         String message = sentences[15] + "\n" + sentences[16];
@@ -425,14 +502,28 @@ public class ChylsyMarableIslandAdventure {
         }
     }
 
+    /**
+     * 
+     */
     public static void endingScreen() {
 
-        String ending = sentences[15];
-
-        output(ending, TITLE, "island.gif");
+        String thanks = "Thank you for playing ";
+        String thanksFR = "Merci pour avoir joué ";
+        String endingMessage = thanks + TITLE + "!" + "\n" + thanksFR + TITLE + "!";
+    
+        output(endingMessage, "island.gif");
     }
 
-    public static int userOptions(int index, String[] text, String[] choices, String fileName) {
+    /**
+     * This method displays the user choice dialog boxes (where the user is 
+     * prompted two options)
+     * @param index - the index of the array
+     * @param choices - the user's choices (defined in the methods userOptions() 
+     * is called in)
+     * @param fileName - the name of the image file
+     * @return - returns an integer 
+     */
+    public static int userOptions(int index, String[] choices, String fileName) {
 
         String message = sentences[index];
 
@@ -461,14 +552,19 @@ public class ChylsyMarableIslandAdventure {
         return 1;
     }
 
-    public static void output(String message, String title, String fileName) {
+    /**
+     * This method outputs the message dialog boxes in the program
+     * @param message - the message of the dialog box 
+     * @param fileName - the name of the image file
+     */
+    public static void output(String message, String fileName) {
 
         ImageIcon icon = new ImageIcon(fileName);
 
         JOptionPane.showMessageDialog(
                 null,
                 message,
-                title,
+                TITLE,
                 JOptionPane.PLAIN_MESSAGE,
                 icon
         );
