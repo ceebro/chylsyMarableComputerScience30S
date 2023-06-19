@@ -11,6 +11,9 @@ public class TextEN {
     
     public static String[] textEN;
     
+    /**
+     * Fills the textEN[] array
+     */
     public static void build() {
         
         textEN = new String[17];
