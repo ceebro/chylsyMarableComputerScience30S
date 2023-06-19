@@ -11,6 +11,9 @@ public class TextFR {
     
     public static String[] textFR;
     
+    /**
+     * Fills the textFR[] array
+     */
     public static void build(){
         
         textFR = new String [17];
