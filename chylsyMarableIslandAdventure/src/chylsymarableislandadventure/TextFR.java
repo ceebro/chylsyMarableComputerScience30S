@@ -37,18 +37,36 @@ public class TextFR {
         textFR[3] = "   Vous choisissez de rester sur l’île, potentiellement pour"
                 + "\n toujours. Au lieu d’explorer la plage, vous allez dans la "
                 + "\n jungle pour l’explorer. ";
-        textFR[4] = "";
-        textFR[5] = "";
-        textFR[6] = "";
-        textFR[7] = "";
-        textFR[8] = "";
-        textFR[9] = "";
+        
+        textFR[4] = "   Vous dépensez vos jours en flottant sur la mer. Vous avez"
+                + "\n faim et fatigué. Éventuellement, vouz mourez dans l'océan.";
+               
+        textFR[5] = "   Les pêcheurs vous donnent de la nourriture et de la protection."
+                + "\n Éventuellement, vous retournez à la société.";
+        //\n
+        textFR[6] = "   Pendant que vous marchez dans la jungle, vous trouvez une"
+                + "\n grotte. Il est sombre et mouillé. Voulez-vous l'explorer?";
+        
+        //' 
+        textFR[7] = "   Il y a un ours dans la grotte! Il se sent fâché à votre arrivé. "
+                + "\n Vous pouvez le combattre ou s'en fuir. Lequel choisissez-vous?";
+        
+        textFR[8] = "   L'ours vous attrapez. Il vous attaque et vous mourez de vos blessures.";
+        
+        textFR[9] = "   ";
+        
         textFR[10] = "";
+        
         textFR[11] = "";
+        
         textFR[12] = "";
+        
         textFR[13] = "";
+        
         textFR[14] = "";
+        
         textFR[15] = "";
+        
         textFR[16] = "";
 
         //</editor-fold>
