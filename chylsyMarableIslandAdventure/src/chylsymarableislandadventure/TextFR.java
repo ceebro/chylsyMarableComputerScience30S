@@ -53,20 +53,42 @@ public class TextFR {
         
         textFR[8] = "   L'ours vous attrapez. Il vous attaque et vous mourez de vos blessures.";
         
-        textFR[9] = "   ";
+        textFR[9] = "   Par miracle, l'ours s'en fuit de la grotte. Vous pouvez"
+                + "\n maintenant s'habiter dans la grotte ou continuer votre"
+                + "\n voyage.";
         
-        textFR[10] = "";
+//        "      You make your own habitat out of the abandoned cave. You "
+//                + "\n live off the land, farming and foraging. You eventually "
+//                + "\n die on the island, warm and secure.";
         
+        textFR[10] = "  Vous creez votre propre habitat dans la grotte. Vous"
+                + "\n continuez votre vie  ";
+        
+        // "      You walk away from the cave and decide to keep exploring"
+               // + "\n the island.";
+                
         textFR[11] = "";
         
+//        "      Exploring the jungle has led you to a settlement. Do you "
+//                + "\n enter this village, or do you walk away?";
         textFR[12] = "";
         
+//         "      You decide to enter the village. Initially, the inhabitants"
+//                + "\n are cautious of you, but soon come to accept your presence."
+//                + "\n You learn to speak their language and eventually fully "
+//                + "\n integrate into their society.";
         textFR[13] = "";
         
+//        "      You wander senselessly through the jungle for days. Your "
+//                + "\n body is exhausted, and you are starving. Eventually, you "
+//                + "\n die of malnourishment.";
         textFR[14] = "";
         
+        //        textEN[15] = "Thank you for playing Island Adventure!";
         textFR[15] = "";
         
+        //        textEN[16] = "Do you want to play again?";
+
         textFR[16] = "";
 
         //</editor-fold>
