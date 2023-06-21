@@ -19,12 +19,13 @@ public class TextEN {
         textEN = new String[17];
         
         // <editor-fold>
+        
         textEN[0] = "       After a boating accident, you are left stranded on a "
                 + "\n tropical island in the middle of the ocean. You are on the"
                 + "\n shore and in need of supplies to survive. Do you explore "
                 + "\n more of the beach, or do you venture into the treacherous "
                 + "\n jungle?";
-        //initial sit
+        //initial situation
         
         textEN[1] = "       Walking along the shoreline has led you to an abandoned"
                 + "\n airplane. Inside, you find supplies as well as an emergency"
@@ -89,6 +90,7 @@ public class TextEN {
         textEN[15] = "Thank you for playing Island Adventure!";
         
         textEN[16] = "Do you want to play again?";
+        
         // </editor-fold>
         
     }
